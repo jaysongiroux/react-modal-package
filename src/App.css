@@ -1,3 +1,8 @@
+body{
+  margin: 20px;
+  background-color: white;
+}
+
 .App {
   text-align: center;
 }
@@ -30,4 +35,27 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.buttonContainer{
+  width: 80%;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;  
+}
+
+.button{
+  margin: 10px;
+  padding: 10px; 
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.button:hover{
+  background-color: #282c34;
 }

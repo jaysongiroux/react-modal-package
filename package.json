@@ -2,6 +2,16 @@
   "name": "simple-react-modal-components",
   "version": "0.1.0",
   "author": "jaysongiroux",
+  "keywords": [
+    "react",
+    "modal",
+    "popup",
+    "dynamic",
+    "reactjs",
+    "simplistic",
+    "babel"
+  ],
+  "main": "dist/index.js",
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -9,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "del dist\\* && SET NODE_ENV=production && babel src/lib --out-dir dist --copy-files",
+    "build": "rm -rf  dist && NODE_ENV=production && babel src/lib --out-dir dist --copy-files",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -17,5 +27,22 @@
     "@babel/cli": "^7.13.16",
     "@babel/core": "^7.14.0",
     "@babel/preset-env": "^7.14.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaysongiroux/react-modal-package"
+  },
+  "homepage": "https://github.com/jaysongiroux/react-modal-package",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

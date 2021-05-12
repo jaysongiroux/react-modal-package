@@ -1,10 +1,13 @@
-import React, { Component } from 'react'
-
+import React, { Component, useState } from 'react'
+import "./styles/SimpleModal.css"
 /*
 Required Props: 
 backgroundDim = bool
 title = string
 body = string
+close = callback
+open = bool
+size = string("small", "medium", "large") - default: large
 
 optional
 done = callback
@@ -13,34 +16,75 @@ export default class SimpleModal extends Component {
     constructor(props){
         super(props)
         this.state = {
+            style: {}
+        }
+    }
 
+    componentDidUpdate(prevProps, prevState, snapshot){
+        if (this.props !== prevProps) {
+            switch(this.props.size){
+                case("small"):
+                this.setState({
+                    style: {
+                        height: "50vh",
+                        width: "50%"
+                    }
+                });
+                break;
+                
+                case("medium"):
+                this.setState({
+                    style:{
+                        height: "60vh",
+                        width: "60%"
+                    }
+                });
+                break;
+                
+                default:
+                case("large"):
+                this.setState({
+                    style: {
+                        height: "80vh",
+                        width: "80%"
+                    }
+                });
+                break;
+            }
         }
     }
 
     render(){
-        return (
-            <div className="SimpleModalContainer">
-                {this.props.backgroundDim &&
-                    <div className="dimBackground" />
-                }
-                <div className="SimpleModal">
-                    <div className="SimpleModalTitleContainer">
-                        <div className="SimpleModalTitle">
-                            {this.props.title}
+        if(this.props.open){
+            return (
+                <div className="SimpleModalContainer">
+                    {this.props.backgroundDim &&
+                        <div className="dimBackground" onClick={this.props.close}/>
+                    }
+                    <div className="SimpleModal" style={this.state.style}>
+                        <div className="SimpleModalTitleContainer">
+                            <div className="SimpleModalTitle">
+                                {this.props.title}
+                            </div>
+                            <div className="closeButton" onClick={this.props.close}>x</div>
                         </div>
-                        <div className="closeButton">x</div>
-                    </div>
-
-                    <div className="SimpleModalBody">
-                        {this.props.body}
-                    </div>
-                    <div className="SimpleModalBottomButtonContainers">
-                        {this.props.done &&
-                            <div className='SimpleModalDoneButton'>Done</div>
-                        }
+    
+                        <div className="SimpleModalBody">
+                            <div>
+                                {this.props.body}
+                            </div>
+                        </div>
+                        <div className="SimpleModalBottomButtonContainers">
+                            {this.props.done &&
+                                <div className='SimpleModalDoneButton' onClick={this.props.done}>Done</div>
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
-        )
-    }
+            )
+        }
+        else {
+            return null
+        }
+    } 
 }

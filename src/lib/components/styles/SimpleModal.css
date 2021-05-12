@@ -1,0 +1,100 @@
+.SimpleModal{
+    /* margin: 20px; */
+    /* height: 80vh;
+    width: 80%; */
+    position: fixed;
+    
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    background-color: white;
+
+    box-shadow: 0px 0px 10px black;
+    animation: fadein .2s;
+}
+
+@keyframes fadein {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.dimBackground{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    height: 100%; 
+    width: 100%;
+    opacity: 25%;
+}
+
+.SimpleModalTitleContainer{
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* height: 7vh; */
+    height: max-content;
+    background-color: grey;
+}
+
+.closeButton{
+    font-weight: 700;
+    font-size: 150%;
+    position: absolute;
+    top: 0; 
+    right: 0;
+    padding-right: 20px;
+    padding-top: 15px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.closeButton:hover {
+    text-shadow: 0 0 2px black;
+    opacity: 90%;
+}
+
+.SimpleModalTitle{
+    font-size: 200%;;
+    font-weight: 600;
+    padding-left: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.SimpleModalBody{
+    height: 60vh;
+    width: 100%;
+    overflow-y: scroll
+}
+
+.SimpleModalBody div{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.SimpleModalBottomButtonContainers{
+    position: fixed;
+    display: flex;
+    bottom: 10px;
+    right: 10px;
+}
+
+.SimpleModalDoneButton{
+    cursor: pointer;
+    padding: 10px;
+    background-color: grey;
+    width: max-content;
+    border-radius: 2px;
+    color: white;
+    transition: .25s;
+}
+
+.SimpleModalDoneButton:hover{
+    background-color: darkgray;
+}
