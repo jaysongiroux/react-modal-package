@@ -9,7 +9,7 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-require("./styles/SimpleModal.css");
+require("./styles/JsonModal.css");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
@@ -18,8 +18,7 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 /*
 Required Props: 
 backgroundDim = bool
-title = string
-body = string
+contents = object
 close = callback
 open = bool
 size = string("small", "medium", "large") - default: large
@@ -31,12 +30,17 @@ class SimpleModal extends _react.Component {
   constructor(props) {
     super(props);
     this.state = {
-      style: {}
+      style: {},
+      contents: {}
     };
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.props !== prevProps) {
+      this.setState({
+        contents: this.props.contents
+      });
+
       switch (this.props.size) {
         case "small":
           this.setState({
@@ -83,12 +87,12 @@ class SimpleModal extends _react.Component {
         className: "SimpleModalTitleContainer"
       }, /*#__PURE__*/_react.default.createElement("div", {
         className: "SimpleModalTitle"
-      }, this.props.title), /*#__PURE__*/_react.default.createElement("div", {
+      }, this.state.contents.title), /*#__PURE__*/_react.default.createElement("div", {
         className: "closeButton",
         onClick: this.props.close
       }, "x")), /*#__PURE__*/_react.default.createElement("div", {
         className: "SimpleModalBody"
-      }, /*#__PURE__*/_react.default.createElement("div", null, this.props.body)), /*#__PURE__*/_react.default.createElement("div", {
+      }, /*#__PURE__*/_react.default.createElement("div", null, this.state.contents.body)), /*#__PURE__*/_react.default.createElement("div", {
         className: "SimpleModalBottomButtonContainers"
       }, this.props.done && /*#__PURE__*/_react.default.createElement("div", {
         className: "SimpleModalDoneButton",

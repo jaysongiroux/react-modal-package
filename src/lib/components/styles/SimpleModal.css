@@ -60,7 +60,7 @@
 }
 
 .SimpleModalTitle{
-    font-size: 200%;;
+    font-size: 1.25em;;
     font-weight: 600;
     padding-left: 20px;
     padding-top: 15px;
@@ -70,7 +70,7 @@
 .SimpleModalBody{
     height: 60vh;
     width: 100%;
-    overflow-y: scroll
+    overflow-y: auto;
 }
 
 .SimpleModalBody div{

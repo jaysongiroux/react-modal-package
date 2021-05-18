@@ -1,6 +1,11 @@
 import React, {useState, Component} from 'react';
 import './App.css';
-import {SimpleModal} from './lib/index'
+import {SimpleModal, JsonModal} from './lib/index'
+
+const contents = ({
+  title: "json modal title",
+  body:"this is the modal body"
+})
 
 function App() {
   function toggleModal(size){
@@ -11,9 +16,19 @@ function App() {
       setSimpleModalOpen(true)
     }
   }
+
+  function toggleJsonModal(size){
+    if(jsonModalOpen){
+      setJsonModalOpen(false)
+    } else {
+      setJsonModalSize(size)
+      setJsonModalOpen(true)
+    }
+  }
   let [SimpleModalOpen, setSimpleModalOpen] = useState(false);
   let [SimpleModalSize, setSimpleModalSize] = useState('');
-
+  let [jsonModalOpen, setJsonModalOpen] = useState(false);
+  let [jsonModalSize, setJsonModalSize] = useState('');
 
   return (
     <div>
@@ -49,7 +64,39 @@ function App() {
         open={SimpleModalOpen}
         size={SimpleModalSize}
       />
-  
+
+      <h2>JsonModal</h2>
+        <div className="buttonContainer">
+          <div className="button" onClick={() => {
+            toggleJsonModal('small')
+            }}>
+            Open Small Json Modal
+          </div>      
+          <div className="button" onClick={() => {
+            toggleJsonModal('medium');
+            }}>
+            Open Medium Json Modal
+          </div>  
+          <div className="button" onClick={() => {
+            toggleJsonModal('large')
+            }}>
+            Open Large Json Modal
+          </div>  
+        </div>
+
+      <JsonModal 
+        contents={contents}
+        backgroundDim={true}
+        close={() => {
+          toggleJsonModal(false)
+        }}  
+        done={()=>{
+          toggleJsonModal(false)
+        }}
+        open={jsonModalOpen}
+        size={jsonModalSize}
+      />
+
       
     </div>
   );
